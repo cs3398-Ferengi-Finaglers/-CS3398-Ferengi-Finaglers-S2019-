@@ -1,6 +1,6 @@
-# [ CS3398-Ferengi-Finaglers-S2019 ]
+# [SaltShaker]
 
-[ Do you have a [project vision or mission statement](https://mozilla.github.io/open-leadership-training-series/articles/introduction-to-open-leadership/stating-your-project-vision/)? Add it here! Otherwise, add a short descirption of your project.]
+[Vision Statement] The Ferengi Finaglers will be working on the website SaltShaker, this website will allow people who play games to search for other people who want to play the same game as them. We are creating this for people who want to play games as a competitive team, or people who are just looking for others to play a game for fun. Many people who play games get frusturated with the game matching them up with people who they can not get along with or play with due to a multitude of reasons, the reason we are creating this website is to minimize this and allow people to enjoy playing games with others instead of getting frustrated by the idea.
 
 [ If you have one, add your logo or an image here ]
 
