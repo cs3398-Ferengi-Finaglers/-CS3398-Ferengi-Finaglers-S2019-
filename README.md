@@ -5,8 +5,6 @@
 [ If you have one, add your logo or an image here ]
 
 
-[ Your longer project description goes here. Use this space to welcome newcomers, articulate the problem you're trying to solve, and explain your solution. For help on writing a good readme, see [this exercise](https://mozilla.github.io/open-leadership-training-series/articles/opening-your-project/write-a-great-project-readme/). ]
-
-## Getting Started
+[Description] Welcome to the SaltShaker! We hope to connect people with similar personalities, priorities and love for video games together in order to make advantageous teams and make the experience fun for everyone.
 
 [ Use this section to orient newcomers to your project on how to use it. Installation or download instructions? Viewing instructions? Example code snippet? Add them here! ]
