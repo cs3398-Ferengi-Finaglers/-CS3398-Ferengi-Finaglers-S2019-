@@ -6,4 +6,4 @@
 
 [Description] Welcome to the SaltShaker! We hope to connect people with similar personalities, priorities and love for video games together in order to make advantageous teams and make the experience fun for everyone.
 
-.[Why is this special?] This project is unique because it shows how one team learns to work together on creating a project that we're all equally passionate about with realistic constraints. 
+[Why is this special?] This project is unique because it shows how one team learns to work together on creating a project that we're all equally passionate about with realistic constraints. 
