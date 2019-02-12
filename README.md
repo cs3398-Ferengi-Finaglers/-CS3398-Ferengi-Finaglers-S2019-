@@ -4,6 +4,6 @@
 
 ![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOSDcoZsLE0KZU7Zb39W681rYFs7J-GK7LYYxZNW1uPY0O365p)
 
-[Description] Welcome to the SaltShaker! We hope to connect people with similar personalities, priorities and love for video games together in order to make advantageous teams and make the experience fun for everyone.
+[Description] Welcome to the SaltShaker! Our goal for this website is to eliminate the frustration of being matched with people, while playing games, that do not play the game the same way you play the game. Either for serious play or just wanting to play games for fun we hope to connect people with similar personalities, priorities and love for video games together in order to make advantageous teams and make the experience fun for everyone.
 
 [Why is this special?] This project is unique because it shows how one team learns to work together on creating a project that we're all equally passionate about with realistic constraints. 
