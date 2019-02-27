@@ -1,0 +1,48 @@
+Ana’s Questions: 
+
+1 What console do you prefer to play on? 
+	A. Playstation 
+	B. Xbox
+
+2. What kind of games do you prefer to play? 
+	A. Strategy 
+	B. Action/War
+	C. Adventure
+	D. Sport
+
+3. (If answered Action/War): 
+	A. First Person Shooter 
+	B. Combat
+	C. Stealth Shooter 
+
+4. (If answered First Person Shooter, can pick multiple from a list of games by drop down):
+	A. Counter Strike 
+	B. Call of Duty
+	C. Overwatch 
+	D. Quake
+	E. Half-Life 
+	F. Doom
+	G. Destiny 
+	H. Halo
+
+5. (If answered Combat, can pick multiple from a list of games by drop down):
+	A. Nidhogg
+	B. Sleeping Dogs
+	C. Chivalry 
+	D. Strike Suit
+	E. Darwind: war on Wheels
+
+6. (If answered Stealth Shooter, can pick multiple from a list of games by drop down):
+	A. Metal Gear Solid
+	B. THe phantom PAin
+	C. Tom Clancy's Splinter Cell 
+	D. Hitman Absolution 
+	E. Hitman 
+	F. Dishonored 
+	G. Deus Ex
+	H. Thief
+	I. Mark of the Ninja
+	J.Alien 
+	K. Assassin's Creed 
+	L. Metal Gear
+	M. Batman 
