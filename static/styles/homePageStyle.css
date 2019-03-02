@@ -19,6 +19,6 @@ body, html {height: 100%;}
 
 .fullSizeImg {height: 100%;}
 
-.oil1Img {background-image: url("/static/images/salt.jpg");}
+.bgImg {background-image: url("/static/images/salt.jpg");}
 
 .bgColorBlackTrans {background-color: rgba(0, 0, 0, 0.6);}
