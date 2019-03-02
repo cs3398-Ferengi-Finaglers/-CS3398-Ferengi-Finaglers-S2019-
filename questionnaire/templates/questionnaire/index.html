@@ -16,15 +16,23 @@
 		<p class="text-center">Questions will go here</p>
 	</div>
 </div>
-<div class="row justify-content-center">
-	<div class="col-5 m-3 p-2 bg-light shadow rounded">
-		<p class="text-center">{{questions}}</p>
-	</div>
-</div>
 {% for question in questions %}
 <div class="row justify-content-center">
 	<div class="col-5 m-3 p-2 bg-light shadow rounded">
-		<p class="text-center">{{question.question}}</p>
+		<p class="text-center">
+			<b>question id: </b>{{question.id}}
+			<br />
+			<b>category: </b>{{question.category}}
+			<br />
+			<b>question: </b>{{question.question}}
+			<br /><br />
+			<b>answer choices: </b>
+			<ul style="text-align:center;list-style:inside;">
+			{% for answer in question.get_answers %}
+				<li>{{answer.answer}}</li>
+			{% endfor %}
+			</ul>
+		</p>
 	</div>
 </div>
 {% endfor %}

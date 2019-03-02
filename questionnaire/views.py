@@ -5,13 +5,13 @@ from .models import Questions, Answers
 
 # Create your views here.
 def index(request):
-	#return HttpResponse("Welcome to the questionnaire.")
-	questions = Questions.objects.all()[:1]
-	answers = Answers.objects.all()
-	
+	#to only display the first question:
+	#questions = Questions.objects.all()[:1]
+	#to display all questions:
+	questions = Questions.objects.all()
+
 	context = {
 		'questions': questions,
-		'answers': answers,
 	}
 	
 	return render(request, 'questionnaire/index.html', context)
