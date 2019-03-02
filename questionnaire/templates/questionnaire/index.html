@@ -1,6 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="/static/styles/questionnaireStyle.css">
+
 <div class="container-fluid paddTop4rem">
 	<header class="container">
 		<div class="row justify-content-center bg-secondary text-white">
@@ -24,16 +26,20 @@
 			<br />
 			<b>category: </b>{{question.category}}
 			<br />
-			<b>question: </b>{{question.question}}
-			<br /><br />
-			<b>answer choices: </b>
-			<form action="">
-			{% for answer in question.get_answers %}
+			<br />
+			<b><u>{{question.question}}</u></b>
+			<form action="" method="post">
+			{% csrf_token %}
+			{% for answer in question.getAnswers %}
 				<label>
-				<input type="radio" name={{question.id}} value={{answer.id}}>{{answer.answer}}</input>
+					<input type="radio" name={{question.id}} value={{answer.id}}>
+					<span class="radio">{{answer.answer}}</span>
+					</input>
 				</label>
 				<br />
 			{% endfor %}
+			<div class="submitButton"><input  type="submit" value="Submit"></div>
+			{% csrf_token %}
 			</form>
 		</p>
 	</div>

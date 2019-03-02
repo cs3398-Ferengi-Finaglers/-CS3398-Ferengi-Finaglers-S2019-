@@ -1,0 +1,11 @@
+input[type="radio"]:checked + .radio {
+  font-weight: bold;
+}
+
+label {
+	min-width: 100%;
+}
+
+.submitButton{
+	text-align: center;
+}

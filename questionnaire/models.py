@@ -23,23 +23,26 @@ class Questions(models.Model):
 		)
 	answertype = models.CharField(
 		choices = (
-			('SINGLE', 'Single Answer'),
-			('MULTIPLE', 'Multiple Answers'),
-			('SORTABLE', 'Sortable/Rateable Answers'),
+			('SINGLE', 'Can only pick one answer'),
+			('MULTIPLE', 'Can pick multiple answers'),
+			('SORTABLE', 'The answers are sortable or rateable'),
 		),
 		default = 'SINGLEANSWER',
 		max_length=64,
 		verbose_name="Answer Type",
 	)
-	def get_answers(self):
-		return Answers.objects.filter(belongsToWhichQuestion=self)
+	def getAnswers(self):
+		return Answers.objects.filter(belongsTo=self)
+	def getAnswerList(self):
+		return [(answer.id, answer.answer) for answer in
+			self.order_answers(Answers.objects.filter(question=self))]
 	def __str__(self):
 		return self.question
 	class Meta:
 		verbose_name_plural = "Questions"
 		
 class Answers(models.Model):
-	belongsToWhichQuestion = models.ForeignKey(
+	belongsTo = models.ForeignKey(
         'Questions',
         on_delete=models.CASCADE,
 		verbose_name="Which question does this answer belong to?"
