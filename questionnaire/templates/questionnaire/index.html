@@ -27,11 +27,14 @@
 			<b>question: </b>{{question.question}}
 			<br /><br />
 			<b>answer choices: </b>
-			<ul style="text-align:center;list-style:inside;">
+			<form action="">
 			{% for answer in question.get_answers %}
-				<li>{{answer.answer}}</li>
+				<label>
+				<input type="radio" name={{question.id}} value={{answer.id}}>{{answer.answer}}</input>
+				</label>
+				<br />
 			{% endfor %}
-			</ul>
+			</form>
 		</p>
 	</div>
 </div>
