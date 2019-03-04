@@ -25,7 +25,7 @@ def index(request, question_pk):
 				Questions.objects.get(pk=question_pk)
 				return redirect('questionnaire', question_pk=question_pk)
 			except Questions.DoesNotExist:
-				return redirect('index')
+				return redirect('questionnairecomplete')
 	else:
 		form = ResponseInstancesForm(question)
 
@@ -47,3 +47,7 @@ class indexRedirectView(RedirectView):
             kwargs = {'question_pk': 1}
         question = get_object_or_404(Questions, pk=kwargs['question_pk'])
         return super().get_redirect_url(*args, **kwargs)
+		
+def complete(request):
+	#return HttpResponse("Hello world! You are now inside one of django's views.")
+	return render(request, 'questionnaire/complete.html')

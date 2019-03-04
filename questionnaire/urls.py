@@ -5,5 +5,6 @@ from questionnaire.views import indexRedirectView
 
 urlpatterns = [
 	path('<int:question_pk>', views.index, name='questionnaire'),
-	path('', indexRedirectView.as_view(), name='questionnaireindex')
+	path('', indexRedirectView.as_view(), name='questionnaireindex'),
+	path('complete', views.complete, name='questionnairecomplete'),
 ]
