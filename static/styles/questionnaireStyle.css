@@ -1,5 +1,15 @@
-input[type="radio"]:checked + .radio {
-  font-weight: bold;
+input[type="radio"]:checked {
+	width: 26px;
+    height: 26px;
+}
+
+#id_answer li:first-child
+{
+	display:none
+}
+
+ul {
+  list-style-type: none;
 }
 
 label {
@@ -9,3 +19,4 @@ label {
 .submitButton{
 	text-align: center;
 }
+

@@ -18,7 +18,6 @@
 		<p class="text-center">Questions will go here</p>
 	</div>
 </div>
-{% for question in questions %}
 <div class="row justify-content-center">
 	<div class="col-5 m-3 p-2 bg-light shadow rounded">
 		<p class="text-center">
@@ -28,21 +27,17 @@
 			<br />
 			<br />
 			<b><u>{{question.question}}</u></b>
-			<form action="" method="post">
+			<form action="./{{question.pk}}" method="POST">
 			{% csrf_token %}
-			{% for answer in question.getAnswers %}
-				<label>
-					<input type="radio" name={{question.id}} value={{answer.id}}>
-					<span class="radio">{{answer.answer}}</span>
-					</input>
-				</label>
-				<br />
-			{% endfor %}
+				{% for field in form %} <!-- {{ form.as_p }} displays the entire form at once -->
+					{{ field.errors }} 
+					{{ field.label_tag }}
+					<span>{{ field }}</span>
+				{% endfor %}
 			<div class="submitButton"><input  type="submit" value="Submit"></div>
 			{% csrf_token %}
 			</form>
 		</p>
 	</div>
 </div>
-{% endfor %}
 {% endblock %}
