@@ -1,3 +1,6 @@
 Tools and Frameworks Used:
   Python3 3.7.14
   Django 2.1.7
+
+Resource:
+https://www.generatedata.com/ #(Used for sample data sets, the numbers are made under normal distrobution)
