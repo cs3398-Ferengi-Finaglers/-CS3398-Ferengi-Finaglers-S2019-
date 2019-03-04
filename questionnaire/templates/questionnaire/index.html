@@ -27,16 +27,28 @@
 			<br />
 			<br />
 			<b><u>{{question.question}}</u></b>
+			
 			<form action="./{{question.pk}}" method="POST">
 			{% csrf_token %}
-				{% for field in form %} <!-- {{ form.as_p }} displays the entire form at once -->
-					{{ field.errors }} 
-					{{ field.label_tag }}
-					<span>{{ field }}</span>
-				{% endfor %}
-			<div class="submitButton"><input  type="submit" value="Submit"></div>
+				<ul id="id_answer">
+					{% for choice in form.answer.field.choices %}
+						<li>
+							<label>
+								<input type="radio" name="answer" value="{{choice.0}}"
+								{% ifequal form.answer.data choice.0 %} 
+									checked="checked"
+								{% endifequal %}
+								/>
+								<span for="" class ="radio">{{choice.1}}</span>
+							</label>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="submitButton"><input  type="submit" value="Submit"></div>
 			{% csrf_token %}
 			</form>
+			
+			
 		</p>
 	</div>
 </div>

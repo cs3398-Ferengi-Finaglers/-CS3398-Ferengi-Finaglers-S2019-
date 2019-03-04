@@ -1,6 +1,5 @@
-input[type="radio"]:checked {
-	width: 26px;
-    height: 26px;
+input[type="radio"]:checked + .radio {
+  font-weight: bold;
 }
 
 #id_answer li:first-child
