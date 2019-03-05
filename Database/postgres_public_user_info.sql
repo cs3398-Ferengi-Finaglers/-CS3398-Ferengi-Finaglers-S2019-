@@ -1,12 +1,15 @@
-CREATE TABLE public.user_info
+create table public.user_info
 (
-    user_id integer DEFAULT nextval('user_info_user_id_seq'::regclass) PRIMARY KEY NOT NULL,
-    username varchar(255) NOT NULL,
-    password varchar(255) NOT NULL,
-    name varchar(255) NOT NULL,
-    email varchar(255) NOT NULL
+  user_id  serial       not null
+    constraint user_info_pkey
+      primary key,
+  username varchar(255) not null,
+  password varchar(255) not null,
+  name     varchar(255) not null,
+  email    varchar(255) not null
 );
-CREATE UNIQUE INDEX user_info_user_name_uindex ON public.user_info (username);
+create unique index user_info_user_name_uindex
+  on user_info (username);
 INSERT INTO public.user_info (user_id, username, password, name, email) VALUES (1, 'myName', 'somePass8', 'Ana Pryamechenko', 'apryvdfh@gmail.com');
 INSERT INTO public.user_info (user_id, username, password, name, email) VALUES (2, 'abcd', 'password1', 'Emily Garcia', 'dkfjhfdklh@yahoo.com');
 INSERT INTO public.user_info (user_id, username, password, name, email) VALUES (3, 'efgh', 'password2', 'Carly Garcia', 'xfkjhdlfkjshdf@gmail.com');
