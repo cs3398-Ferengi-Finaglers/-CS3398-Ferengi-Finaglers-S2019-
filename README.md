@@ -23,3 +23,4 @@ I have completed looking into the KNN equation for the project and deducted that
 Next Step:
 My next step will be to help task out the next sprint, to integrate the user login system with the questionnaire portion of the site so that when a user logs in they are redirected to the questionnaire, and to create different of types of question formats, not just multiple choice question types.
 
+Leander Davis: During the first sprint, I spent the majority of my time learning Django.  I setup  a local test environment and created a Django server.  I helped setup standardized headers and footers for the website.  I generated sample data for testing algorithms when they are ready and to put a load on the database. I helped with bringing the code together and troubleshoot it.  Helped generate questions for the questionnaire.
