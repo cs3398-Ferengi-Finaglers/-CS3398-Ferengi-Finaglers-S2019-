@@ -27,6 +27,6 @@ Leander Davis: During the first sprint, I spent the majority of my time learning
 Next Step:
 My next step is to figure out how to convert JSON data into fields in a database to make it easier to apply the KNN algorithm.  I will learn more about Django to help make the site more dynamic.  Also I plan on learning more about KNN so I can apply Exponential Weighted Average to the hidden values of the users to help better match them.
 
-Ana Prymachenko Entry and Status: During the first Sprint, I 
-Ana Prymachenko Next Step:
+Ana Prymachenko Entry and Status: During the first Sprint, I created the database for both the questionnaire and the login pages. The tasks associated with this artifact are in the Database directory in the master branch of the repository. This artifact takes in values from the login website and checks it against the values stored under the login database. Similarly, this artifact stores answers from the questionnaire for the specific user. I have also participated in the creation of the questions that are used in the questionnaire page.
+Ana Prymachenko Next Step: My next step is to help the group in the tasks at hand for the next sprint. Furthermore, I will create a database for the registration form that will store the user’s personal information, including name, email, username and password.
 
