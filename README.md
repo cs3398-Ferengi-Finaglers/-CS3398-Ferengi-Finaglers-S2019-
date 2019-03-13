@@ -26,3 +26,7 @@ My next step will be to help task out the next sprint, to integrate the user log
 Leander Davis: During the first sprint, I spent the majority of my time learning Django.  I setup  a local test environment and created a Django server.  I helped setup standardized headers and footers for the website.  I generated sample data for testing algorithms when they are ready and to put a load on the database. I helped with bringing the code together and troubleshoot it.  Helped generate questions for the questionnaire.
 Next Step:
 My next step is to figure out how to convert JSON data into fields in a database to make it easier to apply the KNN algorithm.  I will learn more about Django to help make the site more dynamic.  Also I plan on learning more about KNN so I can apply Exponential Weighted Average to the hidden values of the users to help better match them.
+
+Ana Prymachenko Entry and Status: During the first Sprint, I 
+Ana Prymachenko Next Step:
+
