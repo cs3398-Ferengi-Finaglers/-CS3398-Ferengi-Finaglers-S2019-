@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.views import LoginView 
 
 
 def register(request):
@@ -18,3 +19,6 @@ def register(request):
 	else:
 		form = UserRegisterForm()
 	return render(request, 'registration/register.html', {'form': form})
+
+class login(LoginView):
+	template_name='registration/login.html'
