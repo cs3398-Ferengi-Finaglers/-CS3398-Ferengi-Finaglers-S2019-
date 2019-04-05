@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Gamer, SelfEvaluation, PreferenceEvaluation
 
-# Register your models here.
+admin.site.register(Gamer)
+admin.site.register(SelfEvaluation)
+admin.site.register(PreferenceEvaluation)

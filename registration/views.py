@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from django.http import HttpResponse
 
 
 def register(request):
@@ -13,4 +14,5 @@ def register(request):
             return redirect('blog-home')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
+    # return HttpResponse('<h3>Under Construction</h3>')
