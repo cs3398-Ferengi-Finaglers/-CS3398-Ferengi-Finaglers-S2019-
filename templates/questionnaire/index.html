@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/styles/questionnaireStyle.css">
+
+{% if not user.is_authenticated %}
+	<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<center>You must be logged in to take the questionnaire!</center>
+	</header>
+	</div>
+{% else %}
+
+<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<div class="row justify-content-center bg-secondary text-white">
+			<div class="col-4 text-center">
+				Questionnaire
+			</div>
+		</div>
+	</header>
+	</div>
+	
+<div class="row justify-content-center">
+	<div class="col-5 m-3 p-2 bg-light shadow rounded">
+		<p class="text-center">Questions will go here</p>
+	</div>
+</div>
+<div class="row justify-content-center">
+	<div class="col-5 m-3 p-2 bg-light shadow rounded">
+		<p class="text-center">
+			<b>question id: </b>{{question.id}}
+			<br />
+			<b>category: </b>{{question.category}}
+			<br />
+			<br />
+			<b><u>{{question.question}}</u></b>
+			
+			<form action="./{{question.pk}}" method="POST">
+			{% csrf_token %}
+				<ul id="id_answer">
+					{% for choice in form.answer.field.choices %}
+						<li>
+							<label>
+								<input type="radio" name="answer" value="{{choice.0}}"
+								{% ifequal form.answer.data choice.0 %} 
+									checked="checked"
+								{% endifequal %}
+								/>
+								<span for="" class ="radio">{{choice.1}}</span>
+							</label>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="submitButton"><input  type="submit" value="Submit"></div>
+			{% csrf_token %}
+			</form>
+			
+			
+		</p>
+	</div>
+</div>
+{% endif %}
+{% endblock %}

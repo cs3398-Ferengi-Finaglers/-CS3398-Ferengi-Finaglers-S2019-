@@ -25,7 +25,7 @@ SECRET_KEY = '762+_7#*l&i0+(7pafg&3+$+1wm^5r8!ce3rcxs6wcv(k-fnk#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1',]
 
 
 # Application definition
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'SaltShaker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #will search project-level template directory in addition to inside app's
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,13 +104,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Tell django which user model to use and where to redirect on login/logout
+#AUTH_USER_MODEL = 'app.CustomUser'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<center>No need to log in again. You are already signed in as: {{user.username}}!</center>
+	</header>
+	</div>
+	<center><p><b><a href="{% url 'logout' %}">logout</a></b></p></center>
+{% else %}
+<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<h2>Login</h2>
+	</header>
+	</div>
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  {% endif %}
+{% endblock %}
