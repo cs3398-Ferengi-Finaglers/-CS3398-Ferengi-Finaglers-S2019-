@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('registration.urls')), #includes register and login urls
     path('', include('django.contrib.auth.urls')), #allows for logout
 	path ('matchmaking/', include('Matchmaking.urls')),
+    path('',include('Users.urls')),
 ]

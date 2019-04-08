@@ -24,7 +24,7 @@ def EditProfile(request, user_pk):
             post.save()
             return redirect('profile', user_pk = user_pk)
     else:
-        form = ProfileForm(instance = post)
+        form = ProfileForm(instance = profile)
 
 
     context = {

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 	'questionnaire',
     'connect',
 	'Matchmaking',
+    'Users',
 ]
 
 MIDDLEWARE = [
