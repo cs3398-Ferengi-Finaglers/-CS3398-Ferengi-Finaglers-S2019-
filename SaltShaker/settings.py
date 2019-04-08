@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'registration',
 	'questionnaire',
     'connect',
+    'Users',
 ]
 
 MIDDLEWARE = [
