@@ -24,4 +24,5 @@ urlpatterns = [
 	path('questionnaire/', include('questionnaire.urls')),
     path('', include('registration.urls')), #includes register and login urls
     path('', include('django.contrib.auth.urls')), #allows for logout
+    path('',include('Users.urls')),
 ]
