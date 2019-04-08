@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class = "container-fluid paddTop4rem">
+	<body>
+		<h1 ALIGN=CENTER>Matchmaking</h1>
+		<p>This system runs a machine learning algorithm to match you with 
+		players that are likely to be compatible with you when playing game. 
+		The algorithm uses your questionnaire responses to find the compatible
+		players for you.</p>
+		<p>Please select how many players you would like to be matched with below.</p>
+		<form action="" method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Match Me" />
+		</form>
+	</body>
+
+</div>
+{% endblock %}
+	
