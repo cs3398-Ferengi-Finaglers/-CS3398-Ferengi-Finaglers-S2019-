@@ -15,15 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
 from registration import views as regis
-
-urlpatterns = [
-    path('admin/', admin.site.urls, name='admin'),
-    path('', include('landing.urls'), name='index'),
-    path('questionnaire/', include('questionnaire.urls')),
-    path('register/', include('registration.urls'))
-=======
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -31,5 +23,4 @@ urlpatterns = [
 	path('questionnaire/', include('questionnaire.urls')),
     path('', include('registration.urls')), #includes register and login urls
     path('', include('django.contrib.auth.urls')), #allows for logout
->>>>>>> master
 ]

@@ -101,14 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-<<<<<<< HEAD
-=======
 # Tell django which user model to use and where to redirect on login/logout
 #AUTH_USER_MODEL = 'app.CustomUser'
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 
->>>>>>> master
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
