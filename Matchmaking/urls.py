@@ -5,4 +5,5 @@ from questionnaire.views import indexRedirectView
 
 urlpatterns = [
 	path('', views.index, name='matchmakingindex'),
+	path('results', views.results, name='matchmakingresults'),
 ]

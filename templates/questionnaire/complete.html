@@ -2,7 +2,13 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="/static/styles/questionnaireStyle.css">
-
+{% if not user.is_authenticated %}
+	<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<center>You must be logged in to take the questionnaire!</center>
+	</header>
+	</div>
+{% else %}
 <div class="container-fluid paddTop4rem">
 	<header class="container">
 		<div class="row justify-content-center bg-secondary text-white">
@@ -17,5 +23,6 @@
 	<div class="col-5 m-3 p-2 bg-light shadow rounded">
 		<p class="text-center">Questionnaire completed! All questions have been answered. Add more in the database. :)</p>
 	</div>
+{% endif %}
 </div>
 {% endblock %}
