@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, render_to_response, get_object_or
 from django.views.generic.base import RedirectView
 from .models import *
 from .forms import *
+from .knn import *
 
 # Create your views here.
 def index(request):
@@ -25,6 +26,12 @@ def index(request):
 
 			
 			matchmakingInstance.neighbors.add(*allNeighbors)
+			
+			#testing call to knn.py methods
+			data1 = [2, 2, 2, 'a']
+			data2 = [4, 4, 4, 'b']
+			distance = euclideanDistance(data1, data2, 3)
+			print ('Euclidean distance is: ' + str(distance))
 			
 			try: 
 				Matchmaking.objects.get(user=request.user)
