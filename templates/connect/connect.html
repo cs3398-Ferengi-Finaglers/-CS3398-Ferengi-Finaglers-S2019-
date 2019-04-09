@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% if not user.is_authenticated %}
+	<div class="container">
+	<header class="my_container">
+		<center>You must be logged in to add friends!</center>
+	</header>
+	</div>
+{% else %}
+<br><br><br><br>
+
+<h5 ALIGN=CENTER>Friend Requests: </h5><br>
+<div ALIGN=CENTER>
+	{% for my_sub_item in form2 %}
+	<form method = "post">
+	<input type="radio" value="{{my_sub_item}}" id="addFriend">
+	{% csrf_token %}
+	{{my_sub_item}}   <button action = "submit" name="addFriend" value='{{my_sub_item}}'> Add Friend</button></form><br>
+	{% endfor %}</div ALIGN=CENTER> <br>
+
+<div ALIGN=CENTER>
+<h5 ALIGN=CENTER>Add Friends: </h5><br>
+<form method = "post">
+{% csrf_token %}
+{{ form1 }} <button action = "submit" name="sendRequest">Send Request</button><br><br>
+</form></div>
+{% endif %}
+{% endblock %}

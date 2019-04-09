@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from registration import views as regis
+from connect import views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-	path('', include('landing.urls'), name='index'),
-	path('questionnaire/', include('questionnaire.urls')),
+    path('AddFriends/', include('connect.urls'), name='AddFriends'),
+    path('', include('landing.urls'), name='index'),
+    path('questionnaire/', include('questionnaire.urls')),
     path('', include('registration.urls')), #includes register and login urls
     path('', include('django.contrib.auth.urls')), #allows for logout
+    path ('matchmaking/', include('Matchmaking.urls')),
+    path('',include('Users.urls')),
 ]

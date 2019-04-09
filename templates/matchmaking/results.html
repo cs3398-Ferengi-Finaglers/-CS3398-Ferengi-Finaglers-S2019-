@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% if not user.is_authenticated %}
+	<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<center>You must be logged in to be match with other players!</center>
+	</header>
+	</div>
+{% else %}
+<div class = "container-fluid paddTop4rem">
+	<body>
+		<h1 ALIGN=CENTER>Matchmaking</h1>
+		<p>This system runs a machine learning algorithm to match you with 
+		players that are likely to be compatible with you when playing game. 
+		The algorithm uses your questionnaire responses to find the compatible
+		players for you.</p>
+		<center><p>The players you matched with are:</p>
+		{% for neighbor in result.neighbors.all %}
+			<li>{{ neighbor }}</li>
+		{% endfor %}</center>
+	</body>
+
+</div>
+{% endif %}
+{% endblock %}
+	

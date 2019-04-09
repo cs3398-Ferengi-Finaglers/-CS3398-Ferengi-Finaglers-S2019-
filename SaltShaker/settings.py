@@ -42,8 +42,11 @@ INSTALLED_APPS = (
     'questionnaire',
     'crispy_forms',
     # 'friends',
-    'friendslist'
-)
+    'friendslist',
+    'connect',
+    'Matchmaking',
+    'Users',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

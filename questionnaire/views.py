@@ -9,6 +9,7 @@ def index(request, question_pk):
 	question = get_object_or_404(Questions, pk=question_pk)
 	
 	if request.method == 'POST':
+		ResponseInstances.objects.filter(user=request.user).filter(question=question).delete() #delete past responses the user made to thhis question
 		form = ResponseInstancesForm(question, request.POST)  #<-- Note the extra arg
 		if form.is_valid():
 			responseInstance = form.save(commit=False)
