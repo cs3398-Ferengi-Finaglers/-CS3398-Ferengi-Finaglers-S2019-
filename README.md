@@ -39,3 +39,11 @@ Jacob Pangonas: During Sprint 2, I created the User Profile page. Currently the 
 
 Jordan Severinson: During sprint 2 I fixed the registration page, and connected it to the questionnaire. My next step is to auto login after registration so the questionnaire works properly h the register.
 
+Karen Proft - 
+Entry:
+The matchmaking code for this sprint was written by Karen Proft. The artifact for the tasks associated with this is the code and files within the matchmaking folder on the main branch of the repository. This artifact allows a logged in user to select the ammount of users on the site to be matched with and runs an algorithm that matches the user with other users who answered the questionnaire on the site similarly to them. This matchmaking feature can be accessed by going to localhost:8000/matchmaking when the server is running and the user is logged in. 
+Status:
+The matchmaking system that I worked on works and the pages for the user to start the matchmaking process and display the results of the matchmaking work properly. However, the KNN algorithm that is used to compute which users get matched together needs to be worked on in the next sprint as it is currently not properly integrated with the matchmaking system. Instead the system is using a simpler algorithm that does not work as well and is a placeholder. I was also able to help Jacob get the user profile pages feature on the website. The profile feature is complete, but could be styled better in the next sprint.
+Next Step:
+My next step will be to help task out the next sprint, to properly integrate the matchmaking system with the KNN algorithm we will be using, and to make a friendlist section on the user profile pages.
+
