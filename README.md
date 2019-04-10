@@ -24,7 +24,7 @@ I have completed looking into the KNN equation for the project and deducted that
 Next Step:
 My next step will be to help task out the next sprint, to integrate the user login system with the questionnaire portion of the site so that when a user logs in they are redirected to the questionnaire, and to create different of types of question formats, not just multiple choice question types.
 
-Leander Davis: For second sprint, I implemented friendslist database (the implementation is in /friendlist).  I learnt even more about django developement (had to learn this to properly build an app in django).  I also entered questions into the database for the questionnaire (we store our db in seperate repository branch because if you don't it will cause merge conflicts that are not possible to resolve.).
+Leander Davis: For second sprint, I implemented friendslist database (the implementation is in /friendlist).  I learnt even more about django developement (had to learn this to properly build an app in django).  I also entered questions into the database for the questionnaire, is stored in db.json (we store our db in seperate repository branch because if you don't it will cause merge conflicts that are not possible to resolve).
 Next Step:
 My next step is to help with the templates for the displaying friends and allowing to people to friend and unfriend people.  Also I would like to make sure that the site is well organized to allow easier extension, in a whichever way seems the most rational.
 
