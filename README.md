@@ -37,3 +37,5 @@ Ana Prymachenko Next Step: My next step is to create better form handling and a 
 
 Jacob Pangonas: During Sprint 2, I created the User Profile page. Currently the only editable field is the bio. My next steps will be to make everything editable as well as have a redirect button to the edit profile page. I also need to redirect the user to their profile page when they click on the profile tab.
 
+Jordan Severinson: During sprint 2 I fixed the registration page, and connected it to the questionnaire. My next step is to auto login after registration so the questionnaire works properly h the register.
+
