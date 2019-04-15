@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.views.generic.base import RedirectView
 from .models import *
+from django.contrib.auth.models import User
 from .forms import *
 from .knn import *
 
@@ -32,6 +33,10 @@ def index(request):
 			data2 = [4, 4, 4, 'b']
 			distance = euclideanDistance(data1, data2, 3)
 			print ('Euclidean distance is: ' + str(distance))
+			
+			dataset = [[0] * Attribute.objects.all().count() for i in range(User.objects.all().count())]
+			loadDataset(dataset)
+			print(dataset)
 			
 			try: 
 				Matchmaking.objects.get(user=request.user)

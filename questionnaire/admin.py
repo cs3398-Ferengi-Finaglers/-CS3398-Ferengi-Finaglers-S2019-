@@ -3,9 +3,9 @@ from typing import Type, List
 from django.contrib import admin
 
 # Register your models here.
-from .models import Answers, Categories, Questions, ResponseInstances
+from .models import *
 
-admin.site.register(Categories)
+admin.site.register(Attribute)
 
 
 # Questions section on the admin interface
@@ -14,7 +14,7 @@ class AnswersInline(admin.TabularInline):
 
 
 class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('question', 'category', 'answertype', 'id')
+    list_display = ('question', 'attribute', 'answertype', 'id')
     inlines: List[Type[AnswersInline]] = [AnswersInline]
 
 
