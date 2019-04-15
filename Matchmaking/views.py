@@ -20,23 +20,38 @@ def index(request):
 			matchmakingInstance.save()
 			
 			#run knn algorithm
-			allNeighbors = []
-			for i in range(1, int(matchmakingInstance.k) + 1):
-				neighbor = User.objects.get(pk=i)
-				allNeighbors.append(neighbor)
-
 			
-			matchmakingInstance.neighbors.add(*allNeighbors)
-			
-			#testing call to knn.py methods
-			data1 = [2, 2, 2, 'a']
-			data2 = [4, 4, 4, 'b']
-			distance = euclideanDistance(data1, data2, 3)
-			print ('Euclidean distance is: ' + str(distance))
-			
+			# load all users and their attributes (except the current user) as a 2d list to be used as a dataset in knn
 			dataset = [[0] * Attribute.objects.all().count() for i in range(User.objects.all().count())]
-			loadDataset(dataset)
+			loadDataset(dataset, currentUser)
 			print(dataset)
+			
+			# get the user's attributes to pass in to the knn getNeighbors function
+			allAttributes = Attribute.objects.all()
+			userInstance = [0] * allAttributes.count()
+			attributeIndex = 0
+			for attribute in allAttributes:
+				try:
+					userAttributeInstance = MatchmakingAttribute.objects.get(user=request.user, attribute=attribute)
+				except MatchmakingAttribute.DoesNotExist:
+					print('user ' + str(request.user) + ' does not have a value assigned for one of their attributes: '
+					+ str(attribute))
+					dataset[i.id - 1][attributeIndex] = 0
+					break
+				
+				userInstance[attributeIndex] = userAttributeInstance.KNNvalue
+				attributeIndex += 1
+			
+			# get a list of the neighbor attribute values [i][0] and user.id's [i][1]
+			n = getNeighbors(dataset, userInstance, int(matchmakingInstance.k))
+			print(n)
+			
+			# add all the neighbors to the matchmakingInstance of the user
+			allNeighbors = []
+			for i in range(int(matchmakingInstance.k)):
+				neighbor = User.objects.get(id=n[i][1])
+				allNeighbors.append(neighbor)
+			matchmakingInstance.neighbors.add(*allNeighbors)
 			
 			try: 
 				Matchmaking.objects.get(user=request.user)
