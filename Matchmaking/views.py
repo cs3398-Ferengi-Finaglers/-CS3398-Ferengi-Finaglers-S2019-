@@ -23,7 +23,7 @@ def index(request):
 			
 			# load all users and their attributes (except the current user) as a 2d list to be used as a dataset in knn
 			dataset = [[0] * Attribute.objects.all().count() for i in range(User.objects.all().count())]
-			loadDataset(dataset, currentUser)
+			loadDataset(dataset, request.user)
 			print(dataset)
 			
 			# get the user's attributes to pass in to the knn getNeighbors function
