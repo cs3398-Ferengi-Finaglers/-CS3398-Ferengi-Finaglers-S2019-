@@ -6,7 +6,8 @@ from django.dispatch import receiver
 class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=2000, default = "Add more info to your profile!", blank = False)
-    #GP = models.TextField(max_length = 5000, default = "Add the games you are playing here!", blank = False)
+    GP = models.TextField(max_length=5000, default="Add the games you are playing here!", blank=False)
+    CI = models.TextField(max_length=5000, default="Add your discord, steam name and other ways to contact you here!",blank=False)
 
     def __str__(self):
         return self.user
