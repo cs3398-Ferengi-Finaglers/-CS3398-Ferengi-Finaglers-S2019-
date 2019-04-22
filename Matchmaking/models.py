@@ -43,4 +43,32 @@ class MatchmakingAttribute(models.Model):
 	KNNvalue = models.FloatField(
         verbose_name="What is the KNN value of this user's attribute?"
     )
+	
+class UserRating(models.Model):
+	userDoingTheRating = models.ForeignKey(
+		User,
+		on_delete=models.CASCADE,
+		blank=True,
+		null=True,
+		related_name = "userDoingTheRating",
+	)
+	userBeingRated = models.ForeignKey(
+		User,
+		on_delete=models.CASCADE,
+		blank=True,
+		null=True,
+		related_name = "userBeingRated",
+	)
+	aggressionRating = models.IntegerField(
+        default = 0,
+    )
+	skillRating = models.IntegerField(
+        default = 0,
+    )
+	teamworkRating = models.IntegerField(
+        default = 0,
+    )
+	communicationRating = models.IntegerField(
+        default = 0,
+    )
   

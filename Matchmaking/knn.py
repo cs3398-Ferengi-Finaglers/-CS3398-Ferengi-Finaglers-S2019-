@@ -4,14 +4,17 @@ from django.contrib.auth.models import User
 from .models import *
 
 # Will load all users and their attributes into a 2d list that gets passed in
-def loadDataset(dataset, currentUser): #TODO :: set the current user's data in the set as blank so they won't be matched with themselves
+def loadDataset(dataset, currentUser):
 	allUsers = User.objects.all()
 	allAttributes = Attribute.objects.all()
 	
 	for i in allUsers:
 		print(str(i.id) + " " + str(i))
+		
 		attributeIndex = 0
 		for attribute in allAttributes:
+			
+		
 			try:
 				userAttributeInstance = MatchmakingAttribute.objects.get(user=i, attribute=attribute)
 			except MatchmakingAttribute.DoesNotExist:
@@ -21,6 +24,10 @@ def loadDataset(dataset, currentUser): #TODO :: set the current user's data in t
 				break
 				
 			dataset[i.id - 1][attributeIndex] = userAttributeInstance.KNNvalue
+			
+			if i == currentUser: # Set the current user's data in the set as -1 so they aren't likely to be matched with themselves
+				dataset[i.id - 1][attributeIndex] = -1
+				
 			attributeIndex += 1
 	return dataset
 	
