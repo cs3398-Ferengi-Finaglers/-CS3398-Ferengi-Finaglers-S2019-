@@ -6,6 +6,61 @@
 
 	<head>
 		<title>User Profile Page</title>
+		<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  overflow: hidden;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  box-shadow: -310px 0 0 300px #013220;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      color: #13bba4;
+    }
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+/** FF*/
+.slider::-moz-range-progress {
+  background-color: #013220; 
+}
+/* IE*/
+.slider::-ms-fill-lower {
+  background-color: #013220; 
+}
+</style>
 	</head>
 	<body>
 		<h1 ALIGN=CENTER>User Profile Page Rough Idea</h1>
@@ -30,17 +85,31 @@
         </div>
         
         <!-- Modal body -->
+		<form action="" method="post">{% csrf_token %}
         <div class="modal-body">
-          <form action="" method="post">{% csrf_token %}
-			{{ ratingForm.as_p }}
-			<input type="submit" value="Submit" />
+			{% for attribute in ratingForm %}
+			{{ attribute.label }}
+			<p>Value: <span id="value_{{ attribute.auto_id }}"></span></p>
+			
+			{{ attribute }}
+			<script>
+var slider = document.getElementById("{{ attribute.auto_id }}");
+var output = document.getElementById("value_{{ attribute.auto_id }}");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+			{% endfor %}
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Submit</button>
+          <input type="submit" class="btn btn-secondary" value="Submit">
         </div>
-        
+        </form>
+		
       </div>
     </div>
   </div>

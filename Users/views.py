@@ -14,7 +14,7 @@ def profile(request, user_pk):
         ratingForm = UserRatingForm(request.POST)
         if ratingForm.is_valid():
             UserRating.objects.filter(userDoingTheRating=request.user).delete() #delete past rating/refresh response
-            ratingInstance = form.save(commit=False)
+            ratingInstance = ratingForm.save(commit=False)
             if request.user.is_authenticated:
                 ratingInstance.userDoingTheRating = request.user
             else:
