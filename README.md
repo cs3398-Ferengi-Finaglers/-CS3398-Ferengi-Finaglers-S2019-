@@ -24,7 +24,7 @@ I have completed looking into the KNN equation for the project and deducted that
 Next Step:
 My next step will be to help task out the next sprint, to integrate the user login system with the questionnaire portion of the site so that when a user logs in they are redirected to the questionnaire, and to create different of types of question formats, not just multiple choice question types.
 
-Leander Davis: For second sprint, I implemented friendslist database (the implementation is in /friendlist).  I learnt even more about django developement (had to learn this to properly build an app in django).  I also entered questions into the database for the questionnaire (we store our db in seperate repository branch because if you don't it will cause merge conflicts that are not possible to resolve.).
+Leander Davis: For second sprint, I implemented friendslist database (the implementation is in /friendlist).  I learnt even more about django developement (had to learn this to properly build an app in django).  I also entered questions into the database for the questionnaire, is stored in db.json (we store our db in seperate repository branch because if you don't it will cause merge conflicts that are not possible to resolve).
 Next Step:
 My next step is to help with the templates for the displaying friends and allowing to people to friend and unfriend people.  Also I would like to make sure that the site is well organized to allow easier extension, in a whichever way seems the most rational.
 
@@ -35,5 +35,15 @@ Ana Prymachenko Next Step: My next step is to help the group in the tasks at han
 Ana Prymachenko Entry and Status: During the second Sprint, I created an "Send Friend Requests and Add Friends page". The tasks associated with this artifact are in the connect directory in the master branch of the repository. This artifact checks from the database for friend requests associated with the user, outputs them on the page, and allows user to accept said friend requests. Similarly, this artifact allows the user to send friend requests to any users from the database.                                                                                                                                    
 Ana Prymachenko Next Step: My next step is to create better form handling and a database that will better store the friendship relationship between users. Furthermore, beutifying this artifact and making it more in line with the SOLID principles will be a priority for the next sprint. 
 
-Jacob Pangonas: During Sprint 2, I created the User Profile page. Currently the only editable field is the bio. My next steps will be to make everything editable as well as have a redirect button to the edit profile page. I also need to redirect the user to their profile page when they click on the profile tab.
+Jacob Pangonas: During Sprint 2, I created the User Profile page. Currently the only editable field is the bio. I also did reasearch on Gitflow and have an artifact in the artifacts branch with information regarding Gitflow. My next steps will be to make everything editable as well as have a redirect button to the edit profile page. I also need to redirect the user to their profile page when they click on the profile tab.
+
+Jordan Severinson: During sprint 2 I fixed the registration page, and connected it to the questionnaire. My next step is to auto login after registration so the questionnaire works properly h the register.
+
+Karen Proft - 
+Entry:
+The matchmaking code for this sprint was written by Karen Proft. The artifact for the tasks associated with this is the code and files within the matchmaking folder on the main branch of the repository. This artifact allows a logged in user to select the ammount of users on the site to be matched with and runs an algorithm that matches the user with other users who answered the questionnaire on the site similarly to them. This matchmaking feature can be accessed by going to localhost:8000/matchmaking when the server is running and the user is logged in. 
+Status:
+The matchmaking system that I worked on works and the pages for the user to start the matchmaking process and display the results of the matchmaking work properly. However, the KNN algorithm that is used to compute which users get matched together needs to be worked on in the next sprint as it is currently not properly integrated with the matchmaking system. Instead the system is using a simpler algorithm that does not work as well and is a placeholder. I was also able to help Jacob get the user profile pages feature on the website. The profile feature is complete, but could be styled better in the next sprint.
+Next Step:
+My next step will be to help task out the next sprint, to properly integrate the matchmaking system with the KNN algorithm we will be using, and to make a friendlist section on the user profile pages.
 

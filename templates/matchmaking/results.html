@@ -17,7 +17,7 @@
 		players for you.</p>
 		<center><p>The players you matched with are:</p>
 		{% for neighbor in result.neighbors.all %}
-			<li>{{ neighbor }}</li>
+			<li> <a href="{% url 'profile' user_pk=neighbor.pk %}"> {{ neighbor }}</a></li>
 		{% endfor %}</center>
 	</body>
 

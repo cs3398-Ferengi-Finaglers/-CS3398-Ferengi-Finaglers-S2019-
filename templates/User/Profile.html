@@ -1,29 +1,130 @@
 {% extends 'layout.html' %}
+  
 
 {% block content %}
 <div class = "container-fluid paddTop4rem">
 
 	<head>
 		<title>User Profile Page</title>
+		<style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  overflow: hidden;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  box-shadow: -310px 0 0 300px #013220;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      color: #13bba4;
+    }
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+/** FF*/
+.slider::-moz-range-progress {
+  background-color: #013220; 
+}
+/* IE*/
+.slider::-ms-fill-lower {
+  background-color: #013220; 
+}
+</style>
 	</head>
 	<body>
 		<h1 ALIGN=CENTER>User Profile Page Rough Idea</h1>
 			<u1>
 		<h2 ALIGN=CENTER>{{ profile.user.username}}</h2>
+		
+		<!-- Rate User Modal -->
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Rate User
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Rate User: {{profile.user.username}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+		<form action="" method="post">{% csrf_token %}
+        <div class="modal-body">
+			{% for attribute in ratingForm %}
+			{{ attribute.label }}
+			<p>Value: <span id="value_{{ attribute.auto_id }}"></span></p>
+			
+			{{ attribute }}
+			<script>
+var slider = document.getElementById("{{ attribute.auto_id }}");
+var output = document.getElementById("value_{{ attribute.auto_id }}");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+			{% endfor %}
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <input type="submit" class="btn btn-secondary" value="Submit">
+        </div>
+        </form>
+		
+      </div>
+    </div>
+  </div>
+  
+		<br />
+		<br />
+		
 		Bio: {{profile.bio}}<br />
-		<h3>Games I am Playing</h3>
-		<li>	Overwatch</li>
-		<li>	League of Legends</li>
-		<li>	Counter Strike: Global Offensive</li>
-			</u1>
-		<h4>Questionare Answers</h4>
-		<li>Question 1: "Answer here"</li>
-		<li>Question 2: "Answer here"</li>
-		<li>Question 3: "Answer here"</li>
-		<br> </br>
+		<br> 
+		Games I am Playing: {{profile.GP}} <br />
+        <br>
+        Contact Info: {{profile.CI}}
+        <br />
 		<P ALIGN = CENTER> <button type="button">Add Me</button> </p>
 	</body>
 
 </div>
 {% endblock %}
-	

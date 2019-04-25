@@ -23,19 +23,12 @@
 	
 <div class="row justify-content-center">
 	<div class="col-5 m-3 p-2 bg-light shadow rounded">
-		<p class="text-center">Questions will go here</p>
-	</div>
-</div>
-<div class="row justify-content-center">
-	<div class="col-5 m-3 p-2 bg-light shadow rounded">
 		<p class="text-center">
 			<b>question id: </b>{{question.id}}
 			<br />
-			<b>category: </b>{{question.category}}
 			<br />
-			<br />
-			<b><u>{{question.question}}</u></b>
-			
+			<b>{{question.question}}</b>
+			<hr />
 			<form action="./{{question.pk}}" method="POST">
 			{% csrf_token %}
 				<ul id="id_answer">

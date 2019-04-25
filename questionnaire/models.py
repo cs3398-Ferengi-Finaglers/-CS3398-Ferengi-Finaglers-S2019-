@@ -3,27 +3,27 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Categories(models.Model):
-    category = models.CharField(
-        verbose_name='Category',
+class Attribute(models.Model):
+    attribute = models.CharField(
+        verbose_name='Attribute',
         max_length=250,
         unique=True
     )
 
     def __str__(self):
-        return self.category
+        return self.attribute
 
     class Meta:
-        verbose_name_plural = "Categories"
+        verbose_name_plural = "Attributes"
 
 
 class Questions(models.Model):
-    category = models.ForeignKey(
-        'Categories',
+    attribute = models.ForeignKey(
+        'Attribute',
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name="Question Category",
+        verbose_name="What player attribute does this question guage?",
     )
     question = models.TextField(
         max_length=500,
