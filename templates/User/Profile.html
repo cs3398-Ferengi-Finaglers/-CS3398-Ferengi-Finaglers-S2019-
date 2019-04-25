@@ -87,6 +87,9 @@
         <!-- Modal body -->
 		<form action="" method="post">{% csrf_token %}
         <div class="modal-body">
+			Ajust the sliders below to rate this user's attributes on a scale from
+			0 to 5, with 5 being the highest. If you have rated this user in the past,
+			re-rating the user will override your past rating.<br /><br />
 			{% for attribute in ratingForm %}
 			{{ attribute.label }}
 			<p>Value: <span id="value_{{ attribute.auto_id }}"></span></p>
