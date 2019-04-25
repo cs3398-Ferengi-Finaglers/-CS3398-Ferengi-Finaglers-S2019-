@@ -93,14 +93,14 @@
 			
 			{{ attribute }}
 			<script>
-var slider = document.getElementById("{{ attribute.auto_id }}");
-var output = document.getElementById("value_{{ attribute.auto_id }}");
-output.innerHTML = slider.value;
+				var slider{{ attribute.auto_id }} = document.getElementById("{{ attribute.auto_id }}");
+				var output{{ attribute.auto_id }} = document.getElementById("value_{{ attribute.auto_id }}");
+				output{{ attribute.auto_id }}.innerHTML = slider{{ attribute.auto_id }}.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
+				slider{{ attribute.auto_id }}.oninput = function() {
+					output{{ attribute.auto_id }}.innerHTML = this.value;
+				}
+			</script>
 			{% endfor %}
         </div>
         
