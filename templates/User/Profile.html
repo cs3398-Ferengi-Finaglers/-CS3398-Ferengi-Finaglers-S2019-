@@ -74,10 +74,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
     <div class="navbar-nav">
+
+{% if user != profile.user  %}
+  <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal">Rate User</a>
+{% else %}
       <a class="nav-item nav-link" href="/profileEdit/{{profile.user.id}}"> Edit Profile </a>
       <a class="nav-item nav-link" href="/AddFriends"> Add Friends </a>
-      <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal">Rate User</a>
+{% endif %}     
          <!--  <a class="nav-item nav-link disabled" href="#">Disabled</a>-->
     </div>
   </div>
@@ -136,7 +141,9 @@
         <br>
         Contact Info: {{profile.CI}}
         <br />
+    {% if user != profile.user  %}
 		<P ALIGN = CENTER> <button type="button">Add Me</button> </p>
+    {% endif %}
 	</body>
 
 </div>
