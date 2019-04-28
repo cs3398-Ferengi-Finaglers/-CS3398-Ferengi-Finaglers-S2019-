@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import FriendRequests
 from .forms import SendForm
 
@@ -21,11 +21,14 @@ def home_view(request, *args, **kwargs):
 #			FriendRequests.objects.filter(user=request.user, request= myFriend).update(friendship=True)
 		return HttpResponseRedirect("/AddFriends")
 	else:
-		requests = FriendRequests.objects.filter(user=request.user, friendship=False).values("request").values_list('request')
-		form1 = SendForm()
+		#requests = FriendRequests.objects.filter(user=request.user, friendship=False).values("request").values_list('request')
+		requests = FriendRequests.objects.filter(friendship=False, user=request.user)
+		form1 = User.objects.all()
 		my_context = {
 			"form2": requests,
 			"form1": form1
 		}
 		return render(request, "connect/connect.html", my_context)
+
+
 
