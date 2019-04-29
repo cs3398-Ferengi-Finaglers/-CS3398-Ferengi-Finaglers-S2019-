@@ -16,10 +16,10 @@ img.profile-photo-lg{
 	</div>
 {% else %}
 <br><br><br><br>
-
+{% if my_request %}
 <h4 ALIGN=CENTER>Friend Requests:</h5><br>
 <div ALIGN=CENTER class="container" style="background: #e3f2fd;"><br>
-  <form method = "post">{% for my_sub_item in form2 %}
+  <form method = "post">{% for my_sub_request in my_request %}
  <div class="row">
     <div class="col">
           <div class="row">
@@ -27,18 +27,20 @@ img.profile-photo-lg{
               <img src="/static/images/man.png" alt="user" class="profile-photo-lg">
             </div><br><br>
             <div class="col-md-7 col-sm-7">
-              <h5 class="card-title1"><a href="/profile/{{my_sub_item.user.id}}" class="profile-link">{% csrf_token %}{{my_sub_item.user.username}}</a></h5>
+              <h5 class="card-title1"><a href="/profile/{{my_sub_request.from_user.id}}" class="profile-link">{% csrf_token %}{{my_sub_request.from_user.username}}</a></h5>
               <h6 class="card-subtitle mb-2 text-muted">Play Station</h6>
               <p class="card-text">Bio</p>
             </div>
             <div class="col-md-3 col-sm-3">
-              <button action = "submit" name="sendRequest">Accept Request</button></form>
-            </div> 
+              <button action = "submit" name="acceptRequest" value="{{my_sub_request.from_user.id}}">Accept Request</button><br><br>
+              <button action = "submit" name="rejectRequest" value="{{my_sub_request.from_user.id}}">Reject Request</button></form>
+              </div> 
           </div><br>
       </div>  
-    </div>{% endfor %}   
+    </div>{% endfor %}
   </div>
 </div><br><br>
+{%endif%}
 
 <h4 ALIGN=CENTER>Add Friends:</h5><br>
 <div ALIGN=CENTER class="container" >
@@ -47,7 +49,8 @@ img.profile-photo-lg{
       <input type="text" id="myFilter" class="form-control" onkeyup="myFunction() " placeholder="Search for Friends" style="background: #e3f2fd;">
     </div>
   </div>
-  <form method = "post">{% for my_sub_item1 in form1 %}
+  <form method = "post">{% for my_sub_user in myuser %}
+    {% if user != my_sub_user %}
   <div class="row" id="myItems">
     <div class="col">
       <div class="card" style="background: #e3f2fd;">
@@ -57,16 +60,16 @@ img.profile-photo-lg{
               <img src="/static/images/man.png" alt="user" class="profile-photo-lg">
             </div>
             <div class="col-md-7 col-sm-7" style="background: #e3f2fd;">
-              <h5 class="card-title"><a href="/profile/{{my_sub_item1.id}}">{% csrf_token %}{{my_sub_item1}}</a></h5>
+              <h5 class="card-title"><a href="/profile/{{my_sub_user.id}}">{% csrf_token %}{{my_sub_user}}</a></h5>
               <h6 class="card-subtitle mb-2 text-muted">Play Station</h6>
               <p class="card-text">Bio</p>
             </div>
             <div class="col-md-3 col-sm-3" style="background: #e3f2fd;">
-              <button action = "submit" name="sendRequest">Send Request</button></form>
+              <button action = "submit" name="sendRequest" value ="{{my_sub_user.id}}">Send Request</button></form>
             </div>
           </div>
           </div>
-        </div> {% endfor %}
+        </div> {% endif %} {% endfor %}
       </div>    
     </div> 
   </div>
