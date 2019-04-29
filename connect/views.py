@@ -26,7 +26,7 @@ def home_view(request, *args, **kwargs):
 			sendRequest= request.POST.get("sendRequest")
 			other_user = User.objects.get(pk=sendRequest)
 			Friend.objects.add_friend(
-    			sendRequest,                               # The sender
+    			request.user,                               # The sender
     			other_user)
 			#friendship_add_friend(request, sendRequest)
 		elif 'acceptRequest' in request.POST:
