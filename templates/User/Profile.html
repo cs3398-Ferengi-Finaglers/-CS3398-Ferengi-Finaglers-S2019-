@@ -78,7 +78,7 @@
     <div class="navbar-nav">
 
 {% if user != profile.user  %}
-  <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal">Rate User</a>
+  <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal">Rate User</a>  
 {% else %}
       <a class="nav-item nav-link" href="/profileEdit/{{profile.user.id}}"> Edit Profile </a>
       <a class="nav-item nav-link" href="/AddFriends"> Add Friends </a>
@@ -142,7 +142,9 @@
         Contact Info: {{profile.CI}}
         <br />
     {% if user != profile.user  %}
-		<P ALIGN = CENTER> <button type="button">Add Me</button> </p>
+    <form method = "post">{% csrf_token %}
+		<p ALIGN = CENTER> <button action="submit" name="addFriend" value=" {{profile.user.id}}">Add Me</button> </p>
+    </form>
     {% endif %}
 	</body>
 
