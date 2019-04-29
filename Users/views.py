@@ -4,13 +4,20 @@ from django.contrib.auth.decorators import login_required
 from Users.forms import ProfileForm
 from Matchmaking.forms import UserRatingForm
 from Matchmaking.models import UserRating
-from django.contrib.auth.models import User
+from connect.exceptions import AlreadyExistsError
+from connect.models import Friend, FriendshipRequest
 
 @login_required(login_url='/login/')
 def profile(request, user_pk):
     profile = get_object_or_404(UserProfile, user = user_pk)
     
     if request.method == 'POST':
+        if 'addFriend' in request.POST:
+            sendRequest= request.POST.get("addFriend")
+            other = User.objects.get(pk=sendRequest)
+            Friend.objects.add_friend(
+                request.user,                               # The sender
+                other)
         ratingForm = UserRatingForm(request.POST)
         if ratingForm.is_valid():
             UserRating.objects.filter(userDoingTheRating=request.user).delete() #delete past rating/refresh response
@@ -50,4 +57,5 @@ def EditProfile(request, user_pk):
     }
 
     return render (request, 'User/EditProfile.html',context)
+
 # Create your views here.
