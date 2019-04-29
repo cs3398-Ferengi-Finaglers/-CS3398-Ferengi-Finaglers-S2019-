@@ -1,34 +1,54 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from django.shortcuts import render, get_object_or_404
-from .models import FriendRequests
-from .forms import SendForm
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+try:
+    from django.contrib.auth import get_user_model
+    user_model = get_user_model()
+except ImportError:
+    from django.contrib.auth.models import User
+    user_model = User
+from django.shortcuts import render, get_object_or_404, redirect
+
+from connect.exceptions import AlreadyExistsError
+from connect.models import Friend, FriendshipRequest
+from Users.models import UserProfile
+
+get_friendship_context_object_name = lambda: getattr(settings, 'FRIENDSHIP_CONTEXT_OBJECT_NAME', 'user')
+get_friendship_context_object_list_name = lambda: getattr(settings, 'FRIENDSHIP_CONTEXT_OBJECT_LIST_NAME', 'users')
+
+
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
 	if request.method == "POST":
 		if 'sendRequest' in request.POST:
-			formOne = SendForm(request.POST)
-			if formOne.is_valid():
-				print(formOne.cleaned_data['Select_New_Friend'])
-#				myFriend = FriendRequests.objects.filter(user=newFriend)
-#				print(myFriend)
-#				FriendRequests.objects.filter(user=request.user).update(request = newFriend)
-
-		elif 'addFriend' in request.POST:
-			myFriend = request.POST.get("addFriend", "")
-			print(myFriend)
+			sendRequest= request.POST.get("sendRequest")
+			other_user = User.objects.get(pk=sendRequest)
+			Friend.objects.add_friend(
+    			sendRequest,                               # The sender
+    			other_user)
+			#friendship_add_friend(request, sendRequest)
+		elif 'acceptRequest' in request.POST:
+			accept= request.POST.get("acceptRequest")
+			friend_request = FriendshipRequest.objects.get(from_user=accept)
+			friend_request.accept()
+			#friendship_accept(request, accept)
+		elif 'rejectRequest' in request.POST:
+			reject= request.POST.get("rejectRequest")
+			friend_request = FriendshipRequest.objects.get(from_user=reject)
+			friend_request.reject()
+			#friendship_reject(request, reject)
 #			FriendRequests.objects.filter(user=request.user, request= myFriend).update(friendship=True)
 		return HttpResponseRedirect("/AddFriends")
 	else:
-		#requests = FriendRequests.objects.filter(user=request.user, friendship=False).values("request").values_list('request')
-		requests = FriendRequests.objects.filter(friendship=False, user=request.user)
-		form1 = User.objects.all()
+		my_request = FriendshipRequest.objects.filter(to_user=request.user)
+		#for i in my_request:
+		#	profile = [get_object_or_404(UserProfile, user = i.from_user.id)]
+		myuser = User.objects.all()
 		my_context = {
-			"form2": requests,
-			"form1": form1
+			"my_request": my_request,
+			"myuser": myuser,
+			#"profile": profile
 		}
 		return render(request, "connect/connect.html", my_context)
-
-
-
