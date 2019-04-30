@@ -1,5 +1,12 @@
-{% extends 'layout.html' %}
+<style>
+img.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+</style>
 
+{% extends 'layout.html' %}
 {% block content %}
 {% if not user.is_authenticated %}
 	<div class="container">
@@ -9,21 +16,81 @@
 	</div>
 {% else %}
 <br><br><br><br>
+{% if my_request %}
+<h4 ALIGN=CENTER>Friend Requests:</h5><br>
+<div ALIGN=CENTER class="container" style="background: #e3f2fd;"><br>
+  <form method = "post">{% for my_sub_request in my_request %}
+ <div class="row">
+    <div class="col">
+          <div class="row">
+            <div class="col-md-2 col-sm-2">
+              <img src="/static/images/man.png" alt="user" class="profile-photo-lg">
+            </div><br><br>
+            <div class="col-md-7 col-sm-7">
+              <h5 class="card-title1"><a href="/profile/{{my_sub_request.from_user.id}}" class="profile-link">{% csrf_token %}{{my_sub_request.from_user.username}}</a></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Play Station</h6>
+              <p class="card-text">Bio</p>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button action = "submit" name="acceptRequest" value="{{my_sub_request.from_user.id}}">Accept Request</button><br><br>
+              <button action = "submit" name="rejectRequest" value="{{my_sub_request.from_user.id}}">Reject Request</button></form>
+              </div> 
+          </div><br>
+      </div>  
+    </div>{% endfor %}
+  </div>
+</div><br><br>
+{%endif%}
 
-<h5 ALIGN=CENTER>Friend Requests: </h5><br>
-<div ALIGN=CENTER>
-	{% for my_sub_item in form2 %}
-	<form method = "post">
-	<input type="radio" value="{{my_sub_item}}" id="addFriend">
-	{% csrf_token %}
-	{{my_sub_item}}   <button action = "submit" name="addFriend" value='{{my_sub_item}}'> Add Friend</button></form><br>
-	{% endfor %}</div ALIGN=CENTER> <br>
+<h4 ALIGN=CENTER>Add Friends:</h5><br>
+<div ALIGN=CENTER class="container" >
+  <div class="row">
+    <div class="col">
+      <input type="text" id="myFilter" class="form-control" onkeyup="myFunction() " placeholder="Search for Friends" style="background: #e3f2fd;">
+    </div>
+  </div>
+  <form method = "post">{% for my_sub_user in myuser %}
+    {% if user != my_sub_user and my_sub_user not in my_friends and my_sub_user.id not in old_requests and my_sub_user.id not in my_request %}
+  <div class="row" id="myItems">
+    <div class="col">
+      <div class="card" style="background: #e3f2fd;">
+        <div class="card-body" style="background: #e3f2fd;">
+          <div class="row" style="background: #e3f2fd;">
+            <div class="col-md-2 col-sm-2" style="background: #e3f2fd;" >
+              <img src="/static/images/man.png" alt="user" class="profile-photo-lg">
+            </div>
+            <div class="col-md-7 col-sm-7" style="background: #e3f2fd;">
+              <h5 class="card-title"><a href="/profile/{{my_sub_user.id}}">{% csrf_token %}{{my_sub_user}}</a></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Play Station</h6>
+              <p class="card-text">Bio</p>
+            </div>
+            <div class="col-md-3 col-sm-3" style="background: #e3f2fd;">
+              <button action = "submit" name="sendRequest" value ="{{my_sub_user.id}}">Send Request</button></form>
+            </div>
+          </div>
+          </div>
+        </div> {% endif %} {% endfor %} 
+      </div>    
+    </div> 
+  </div>
+</div>
+<script>
+  function myFunction() {
+    var input, filter, cards, cardContainer, h5, title, i;
+    input = document.getElementById("myFilter");
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("myItems");
+    cards = cardContainer.getElementsByClassName("card");
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".card-body h5.card-title");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+</script>
 
-<div ALIGN=CENTER>
-<h5 ALIGN=CENTER>Add Friends: </h5><br>
-<form method = "post">
-{% csrf_token %}
-{{ form1 }} <button action = "submit" name="sendRequest">Send Request</button><br><br>
-</form></div>
 {% endif %}
 {% endblock %}

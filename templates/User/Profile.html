@@ -5,6 +5,7 @@
 <div class = "container-fluid paddTop4rem">
 
 	<head>
+  <meta http-equiv="refresh" content="5">
 		<title>User Profile Page</title>
 		<style>
 .slidecontainer {
@@ -67,12 +68,27 @@
 			<u1>
 		<h2 ALIGN=CENTER>{{ profile.user.username}}</h2>
 		
-		<!-- Rate User Modal -->
-  <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Rate User
-  </button>
 
+ <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+  <!--  <a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+    <div class="navbar-nav">
+
+{% if user != profile.user  %}
+  <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal">Rate User</a>  
+{% else %}
+      <a class="nav-item nav-link" href="/profileEdit/{{profile.user.id}}"> Edit Profile </a>
+      <a class="nav-item nav-link" href="/AddFriends"> Add Friends </a>
+{% endif %}     
+         <!--  <a class="nav-item nav-link disabled" href="#">Disabled</a>-->
+    </div>
+  </div>
+</nav>
+   <!-- Rate User Modal -->
   <!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-dialog-centered">
@@ -85,45 +101,67 @@
         </div>
         
         <!-- Modal body -->
-		<form action="" method="post">{% csrf_token %}
+    <form action="" method="post">{% csrf_token %}
         <div class="modal-body">
-			{% for attribute in ratingForm %}
-			{{ attribute.label }}
-			<p>Value: <span id="value_{{ attribute.auto_id }}"></span></p>
-			
-			{{ attribute }}
-			<script>
-var slider = document.getElementById("{{ attribute.auto_id }}");
-var output = document.getElementById("value_{{ attribute.auto_id }}");
-output.innerHTML = slider.value;
+      Ajust the sliders below to rate this user's attributes on a scale from
+      0 to 5, with 5 being the highest. If you have rated this user in the past,
+      re-rating the user will override your past rating.<br /><br />
+      {% for attribute in ratingForm %}
+      {{ attribute.label }}
+      <p>Value: <span id="value_{{ attribute.auto_id }}"></span></p>
+      
+      {{ attribute }}
+      <script>
+        var slider{{ attribute.auto_id }} = document.getElementById("{{ attribute.auto_id }}");
+        var output{{ attribute.auto_id }} = document.getElementById("value_{{ attribute.auto_id }}");
+        output{{ attribute.auto_id }}.innerHTML = slider{{ attribute.auto_id }}.value;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-</script>
-			{% endfor %}
+        slider{{ attribute.auto_id }}.oninput = function() {
+          output{{ attribute.auto_id }}.innerHTML = this.value;
+        }
+      </script>
+      {% endfor %}
         </div>
-        
+      
         <!-- Modal footer -->
         <div class="modal-footer">
           <input type="submit" class="btn btn-secondary" value="Submit">
         </div>
         </form>
-		
+    
       </div>
     </div>
   </div>
   
-		<br />
-		<br />
-		
+    <br />
+    <br />
+
 		Bio: {{profile.bio}}<br />
 		<br> 
 		Games I am Playing: {{profile.GP}} <br />
         <br>
         Contact Info: {{profile.CI}}
         <br />
-		<P ALIGN = CENTER> <button type="button">Add Me</button> </p>
+    {% if user != profile.user  %}
+      {% if profile.user in friends %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="deleteFriend" value="{{profile.user.id}}">Unfriend</button></p>
+        </form> {% endif %}
+      {% if profile.user.id in my_request %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="rejectRequest" value="{{profile.user.id}}">Reject Request</button></p>
+        </form> 
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="acceptRequest" value="{{profile.user.id}}">Accept Request</button></p>
+        </form> {% endif %}
+        {% if profile.user.id in sent_requests %}
+        <p ALIGN = CENTER> <button disabled > Waiting on response to friend request</button></p>
+        {% endif %}
+      {% if profile.user.id not in sent_requests and profile.user not in friends and profile.user.id not in my_request %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="sendRequest" value ="{{profile.user.id}}">Add Me</button></p>
+        </form> {% endif %}
+     {%endif%}
 	</body>
 
 </div>

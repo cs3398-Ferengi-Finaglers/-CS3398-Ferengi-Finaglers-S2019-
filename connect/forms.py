@@ -4,8 +4,10 @@ from django.shortcuts import render
       
 USERS = User.objects.all()
 
-class SendForm(forms.Form):
-	Select_New_Friend = forms.ModelChoiceField(queryset=USERS)
+#class ReceiveForm(forms.Form):
+#	class Meta:
+#		model = FriendRequests.objects.filter(user=2, friendship=False)
+	#	fields = ['request']
 
 #class ReceiveForm(forms.Form):
 
