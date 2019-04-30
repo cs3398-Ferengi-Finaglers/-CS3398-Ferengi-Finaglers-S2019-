@@ -43,12 +43,13 @@ def home_view(request, *args, **kwargs):
 		return HttpResponseRedirect("/AddFriends")
 	else:
 		my_request = FriendshipRequest.objects.filter(to_user=request.user)
-		#for i in my_request:
-		#	profile = [get_object_or_404(UserProfile, user = i.from_user.id)]
 		myuser = User.objects.all()
+		my_friends = Friend.objects.friends(request.user)
+		old_requests = FriendshipRequest.objects.filter(from_user=request.user).values_list('to_user', flat=True).order_by('id')
 		my_context = {
 			"my_request": my_request,
 			"myuser": myuser,
-			#"profile": profile
+			"my_friends" : my_friends,
+			"old_requests" : old_requests
 		}
 		return render(request, "connect/connect.html", my_context)
