@@ -5,6 +5,7 @@
 <div class = "container-fluid paddTop4rem">
 
 	<head>
+  <meta http-equiv="refresh" content="5">
 		<title>User Profile Page</title>
 		<style>
 .slidecontainer {
@@ -142,10 +143,25 @@
         Contact Info: {{profile.CI}}
         <br />
     {% if user != profile.user  %}
-    <form method = "post">{% csrf_token %}
-		<p ALIGN = CENTER> <button action="submit" name="addFriend" value=" {{profile.user.id}}">Add Me</button> </p>
-    </form>
-    {% endif %}
+      {% if profile.user in friends %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="deleteFriend" value="{{profile.user.id}}">Unfriend</button></p>
+        </form> {% endif %}
+      {% if profile.user.id in my_request %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="rejectRequest" value="{{profile.user.id}}">Reject Request</button></p>
+        </form> 
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="acceptRequest" value="{{profile.user.id}}">Accept Request</button></p>
+        </form> {% endif %}
+        {% if profile.user.id in sent_requests %}
+        <p ALIGN = CENTER> <button disabled > Waiting on response to friend request</button></p>
+        {% endif %}
+      {% if profile.user.id not in sent_requests and profile.user not in friends and profile.user.id not in my_request %}
+        <form method = "post">{% csrf_token %}
+          <p ALIGN = CENTER> <button action = "submit" name="sendRequest" value ="{{profile.user.id}}">Add Me</button></p>
+        </form> {% endif %}
+     {%endif%}
 	</body>
 
 </div>
