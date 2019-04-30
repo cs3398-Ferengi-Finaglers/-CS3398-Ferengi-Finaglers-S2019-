@@ -50,7 +50,7 @@ img.profile-photo-lg{
     </div>
   </div>
   <form method = "post">{% for my_sub_user in myuser %}
-    {% if user != my_sub_user and my_sub_user not in my_friends and my_sub_user.id not in old_requests %}
+    {% if user != my_sub_user and my_sub_user not in my_friends and my_sub_user.id not in old_requests and my_sub_user.id not in my_request %}
   <div class="row" id="myItems">
     <div class="col">
       <div class="card" style="background: #e3f2fd;">
