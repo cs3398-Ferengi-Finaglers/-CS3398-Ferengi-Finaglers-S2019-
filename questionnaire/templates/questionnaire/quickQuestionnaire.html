@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/styles/questionnaireStyle.css">
+
+<div class="container-fluid paddTop4rem">
+	<header class="container">
+		<div class="row justify-content-center bg-secondary text-white">
+			<div class="col-4 text-center">
+				Quick Questionnaire
+			</div>
+		</div>
+	</header>
+</div>
+	
+<div class="row justify-content-center">
+	<div class="col-5 m-3 p-2 bg-light shadow rounded">
+		<p class="text-center">Questions will go here</p>
+	</div>
+</div>
+<div class="row justify-content-center">
+	<div class="col-5 m-3 p-2 bg-light shadow rounded"><!---->
+		<p class="text-center">
+			<b>What type of gamer are you?</b>
+			<br />
+			<br />
+			<br />
+			<form action="./complete" method="POST">
+			{% csrf_token %}
+				<ul id="id_answer">
+						<li>
+							<label>
+								<input type="radio" name="answer" value="{{choice.0}}"
+								{% ifequal form.answer.data choice.0 %} 
+									checked="checked"
+								{% endifequal %}
+								/>
+								<span for="" class ="radio">{{choice.1}}</span>
+							</label>
+						</li>
+				</ul>
+				<div class="submitButton"><input  type="submit" value="Submit"></div>
+			{% csrf_token %}
+			</form>
+			
+			
+		</p>
+	</div>
+</div>
+{% endblock %}
